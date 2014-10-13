@@ -20,7 +20,7 @@ class HomeController {
 	 */
 	public function index()
 	{
-		return view('hello');
+		return view('home');
 	}
 
 }
