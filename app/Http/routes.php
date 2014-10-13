@@ -14,10 +14,8 @@
 $router->get('/', 'HomeController@index');
 
 
-$router->resource('monkey', 'MonkeyController');
+$router->post('/monkey/{monkeyid}/banana/{bananaowner}', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
 
-
-$router->resource('banana', 'BananaController');
 
 
 $router->get('/createMonkeys', function(){

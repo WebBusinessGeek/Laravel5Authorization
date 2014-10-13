@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests;
+
 class HomeController {
 
 	/*
@@ -22,5 +24,11 @@ class HomeController {
 	{
 		return view('home');
 	}
+
+
+	// public function monkeyCheck(MonkeyBananaCheckRequest){
+
+
+	// }
 
 }
