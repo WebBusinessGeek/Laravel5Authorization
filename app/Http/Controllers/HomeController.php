@@ -2,6 +2,8 @@
 
 use App\Http\Requests;
 
+
+
 class HomeController {
 
 	/*
@@ -22,13 +24,17 @@ class HomeController {
 	 */
 	public function index()
 	{
+
+	
+	
 		return view('home');
 	}
 
 
-	// public function monkeyCheck(MonkeyBananaCheckRequest){
+	public function monkeyCheck(\App\Http\Requests\MonkeyBananaCheckRequest $request){
 
+		dd($this->route->parameter('monkeyId'));
 
-	// }
+	}
 
 }

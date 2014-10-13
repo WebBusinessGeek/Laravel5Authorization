@@ -1,5 +1,7 @@
 <?php
 
+//use Illuminate\Support\Facades;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,14 +13,9 @@
 |
 */
 
-$router->get('/', 'HomeController@index');
 
-
-$router->post('/monkey/{monkeyid}/banana/{bananaowner}', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
-
-
-
-$router->get('/createMonkeys', function(){
+//bootstrap the session data
+$router->get('/', function(){
 
 	//create monkeys
 	$monkeysArray = [];
@@ -70,25 +67,12 @@ $router->get('/createMonkeys', function(){
 	}
 
 
-	return Session::put('monkeys', $monkeysArray). Session::put('bananas', $bananasArray);
+	return Session::put('monkeys', $monkeysArray). Session::put('bananas', $bananasArray).Redirect::to('/home');
 
-	
 
 });
 
-$router->get('/check', function(){
-
-	if(Session::has('monkeys') && Session::has('bananas')){
-		dd(Session::get('bananas'));
-	}
-	else{
-		return 'monkeys or bananas not here';
-	}
-
 	
-});
-
-
 
 
 
@@ -133,4 +117,29 @@ class banana {
 	//who is the owner of the banana?
 	public $monkeyId;
 }
+
+$router->get('/check', function(){
+
+	if(Session::has('monkeys') && Session::has('bananas')){
+		dd(Session::get('bananas'));
+	}
+	else{
+		return 'monkeys or bananas not here';
+	}
+
+	
+});
+
+
+
+
+
+
+
+
+$router->get('/home', 'HomeController@index');
+
+
+$router->post('/monkey/{monkeyid}/banana/{bananaowner}', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
+
 
