@@ -33,7 +33,7 @@ class HomeController {
 
 	public function monkeyCheck(\App\Http\Requests\MonkeyBananaCheckRequest $request){
 
-		dd($this->route->parameter('monkeyId'));
+		
 
 	}
 

@@ -23,7 +23,7 @@ class MonkeyBananaCheckRequest extends FormRequest {
 	 */
 	public function authorize()
 	{
-		dd($this->route->parameter('monkeyId'));
+		dd($this->route->parameters());
 	}
 
 }

@@ -28,12 +28,12 @@
 
    	 <h3>Check if the monkey has <span class="emphatic">Authorization</span> eat the banana</h3>
    	 
-   	 	{!! Form::open(['route'=> ['monkey.check', 5, 6 ] ])  !!}
+   	 	{!! Form::open(['route'=> array('monkey.check', 5, 6)  ])  !!}
 
    	 		<div class="form-group">
 	   	 		{!! Form::label('monkey', 'Pick a Monkey: ') !!}
 
-	   	 		<select class="form-control">
+	   	 		<select class="form-control" name="monkeyId">
 	   	 		@foreach(Session::get('monkeys') as $monkey)
 	   	 			<option value="{{$monkey->id}}">{{$monkey->name}}</option>
 	   	 		@endforeach
@@ -43,7 +43,7 @@
 		   	 <div class="form-group">
 	   	 		{!! Form::label('monkey', 'Pick a Banana: ') !!}
 
-	   	 		<select class="form-control">
+	   	 		<select class="form-control" name="bananaOwner">
 	   	 		@foreach(Session::get('bananas') as $banana)
 	   	 			<option value="{{$banana->monkeyId}}">{{$banana->number}}</option>
 	   	 		@endforeach
