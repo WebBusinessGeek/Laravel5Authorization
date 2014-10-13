@@ -50,7 +50,29 @@ $router->get('/createMonkeys', function(){
 	}
 
 	//create bananas
-	return Session::put('monkeys', $monkeysArray). Session::put('message', 'monkeys are stored');
+	$bananasArray = [];
+	$bananaNumBox = [
+		1,
+		2,
+		3,
+		4,
+		5
+	];
+
+	$bananaOwnerBox = [
+		148492,
+		358439,
+		202349,
+		203495,
+		123898,
+	];
+	for($i = 0; $i < count($bananaNumBox); $i++){
+		$banana = new banana($bananaNumBox[$i], $bananaOwnerBox[$i]);
+		array_push($bananasArray, $banana);
+	}
+
+
+	return Session::put('monkeys', $monkeysArray). Session::put('bananas', $bananasArray);
 
 	
 
@@ -58,16 +80,14 @@ $router->get('/createMonkeys', function(){
 
 $router->get('/check', function(){
 
-	// if(Session::has('monkeys')){
-	// 	return Session::get('monkeys');
-	// }
-	// else{
-	// 	return 'monkeys not here';
-	// }
-
-	if(Session::has('message')){
-		return Session::get('message');
+	if(Session::has('monkeys') && Session::has('bananas')){
+		dd(Session::get('bananas'));
 	}
+	else{
+		return 'monkeys or bananas not here';
+	}
+
+	
 });
 
 
@@ -100,6 +120,14 @@ class monkey {
 
 
 class banana {
+
+	//constructor function
+	public function __construct($number, $id){
+
+		$this->number = $number;
+
+		$this->monkeyId = $id;
+	}
 
 	//what number banana is it?
 	public $number;
