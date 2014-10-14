@@ -33,7 +33,7 @@ class HomeController {
 
 	public function monkeyCheck(\App\Http\Requests\MonkeyBananaCheckRequest $request){
 
-		
+		return 'That monkey is authorized to eat that banana!';
 
 	}
 

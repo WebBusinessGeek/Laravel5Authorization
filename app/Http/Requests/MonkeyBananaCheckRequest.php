@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use \Illuminate\Http\Response;
 
 class MonkeyBananaCheckRequest extends FormRequest {
 
@@ -23,7 +24,13 @@ class MonkeyBananaCheckRequest extends FormRequest {
 	 */
 	public function authorize()
 	{
-		dd($this->route->parameters());
+		 return $this->input('monkeyId') == $this->input('bananaOwner');
+	}
+
+	public function forbiddenResponse(){
+
+		return new Response('That monkey is not allowed to eat other monkey\'s bananas', 403);
+
 	}
 
 }

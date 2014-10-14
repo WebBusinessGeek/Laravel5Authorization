@@ -140,6 +140,6 @@ $router->get('/check', function(){
 $router->get('/home', 'HomeController@index');
 
 
-$router->post('/monkey/{monkeyId}/banana/{bananaOwner}', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
+$router->post('/monkey', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
 
 

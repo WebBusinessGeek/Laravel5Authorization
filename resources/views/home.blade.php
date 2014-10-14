@@ -28,7 +28,7 @@
 
    	 <h3>Check if the monkey has <span class="emphatic">Authorization</span> eat the banana</h3>
    	 
-   	 	{!! Form::open(['route'=> array('monkey.check', 5, 6)  ])  !!}
+   	 	{!! Form::open(['route'=> 'monkey.check'  ])  !!}
 
    	 		<div class="form-group">
 	   	 		{!! Form::label('monkey', 'Pick a Monkey: ') !!}
