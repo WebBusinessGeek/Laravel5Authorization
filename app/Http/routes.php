@@ -72,9 +72,19 @@ $router->get('/', function(){
 
 });
 
-	
+
+$router->get('/home', 'HomeController@index');
 
 
+$router->post('/monkey', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
+
+
+
+/*
+* Create the classes 
+* needed for example
+* to work properly
+*/
 
 //create monkey class
 
@@ -117,29 +127,4 @@ class banana {
 	//who is the owner of the banana?
 	public $monkeyId;
 }
-
-$router->get('/check', function(){
-
-	if(Session::has('monkeys') && Session::has('bananas')){
-		dd(Session::get('bananas'));
-	}
-	else{
-		return 'monkeys or bananas not here';
-	}
-
-	
-});
-
-
-
-
-
-
-
-
-$router->get('/home', 'HomeController@index');
-
-
-$router->post('/monkey', ['as' => 'monkey.check', 'uses' => 'HomeController@monkeyCheck']);
-
 
